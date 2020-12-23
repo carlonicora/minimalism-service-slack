@@ -30,7 +30,38 @@ class Slack extends AbstractService
      * @param string $message
      * @throws Exception
      */
-    public function sendMessage(string $serviceName, string $message): void
+    public function sendError(string $serviceName, string $message): void
+    {
+        $this->sendMessage('error', $serviceName, $message);
+    }
+
+    /**
+     * @param string $serviceName
+     * @param string $message
+     * @throws Exception
+     */
+    public function sendWarning(string $serviceName, string $message): void
+    {
+        $this->sendMessage('warning', $serviceName, $message);
+    }
+
+    /**
+     * @param string $serviceName
+     * @param string $message
+     * @throws Exception
+     */
+    public function sendNotification(string $serviceName, string $message): void
+    {
+        $this->sendMessage('notification', $serviceName, $message);
+    }
+
+    /**
+     * @param string $type
+     * @param string $serviceName
+     * @param string $message
+     * @throws Exception
+     */
+    private function sendMessage(string $type, string $serviceName, string $message): void
     {
         if ($this->configData->getURL() === null || $this->configData->getChannel() === null){
             throw new RuntimeException('Slack not configured');
@@ -41,7 +72,7 @@ class Slack extends AbstractService
                 'type' => 'context',
                 'elements' => [
                     'type' => 'mrkdwn',
-                    'text' => '*minimalism warning*: error identified in `' . $serviceName . '`'
+                    'text' => '*minimalism ' . $type . '* identified in `' . $serviceName . '`'
                 ],
             ],[
                 'type' => 'divider'
