@@ -11,6 +11,9 @@ class SlackConfigurations extends AbstractServiceConfigurations
 
     /** @var string|null  */
     private ?string $channel;
+    
+    /** @var string|null  */
+    private ?string $environment;
 
     /**
      * rabbitMqConfigurations constructor.
@@ -19,6 +22,7 @@ class SlackConfigurations extends AbstractServiceConfigurations
     public function __construct() {
         $this->URL = getenv('MINIMALISM_SERVICE_SLACK_URL');
         $this->channel = getenv('MINIMALISM_SERVICE_SLACK_CHANNEL');
+        $this->environment = getenv('MINIMALISM_SERVICE_SLACK_ENVIRONMENT');
     }
 
     /**
@@ -35,5 +39,13 @@ class SlackConfigurations extends AbstractServiceConfigurations
     public function getChannel(): ?string
     {
         return $this->channel;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getEnvironment(): ?string
+    {
+        return $this->environment;
     }
 }
