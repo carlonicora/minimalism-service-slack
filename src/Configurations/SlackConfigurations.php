@@ -10,8 +10,8 @@ class SlackConfigurations extends AbstractServiceConfigurations
     private ?string $URL;
 
     /** @var string|null  */
-    private ?string $channel;
-    
+    private ?string $token;
+
     /** @var string|null  */
     private ?string $environment;
 
@@ -21,8 +21,8 @@ class SlackConfigurations extends AbstractServiceConfigurations
      */
     public function __construct() {
         $this->URL = getenv('MINIMALISM_SERVICE_SLACK_URL');
-        $this->channel = getenv('MINIMALISM_SERVICE_SLACK_CHANNEL');
         $this->environment = getenv('MINIMALISM_SERVICE_SLACK_ENVIRONMENT');
+        $this->token = getenv('MINIMALISM_SERVICE_SLACK_TOKEN');
     }
 
     /**
@@ -36,16 +36,16 @@ class SlackConfigurations extends AbstractServiceConfigurations
     /**
      * @return string|null
      */
-    public function getChannel(): ?string
+    public function getEnvironment(): ?string
     {
-        return $this->channel;
+        return $this->environment;
     }
 
     /**
      * @return string|null
      */
-    public function getEnvironment(): ?string
+    public function getToken(): ?string
     {
-        return $this->environment;
+        return $this->token;
     }
 }
