@@ -4,6 +4,7 @@ namespace CarloNicora\Minimalism\Services\Slack\Objects\Parts;
 use CarloNicora\Minimalism\Services\Slack\Factories\SlackElementFactory;
 use CarloNicora\Minimalism\Services\Slack\Interfaces\SlackMessagePartInterface;
 use CarloNicora\Minimalism\Services\Slack\Objects\Elements\SlackMessageElementText;
+use JetBrains\PhpStorm\ArrayShape;
 
 class SlackMessagePartHeader implements SlackMessagePartInterface
 {
@@ -23,7 +24,7 @@ class SlackMessagePartHeader implements SlackMessagePartInterface
     /**
      * @return array
      */
-    public function getContent(): array
+    #[ArrayShape(['type' => "string", 'text' => "array"])] public function getContent(): array
     {
         return [
             'type' => 'header',

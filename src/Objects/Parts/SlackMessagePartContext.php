@@ -3,6 +3,7 @@ namespace CarloNicora\Minimalism\Services\Slack\Objects\Parts;
 
 use CarloNicora\Minimalism\Services\Slack\Interfaces\SlackMessageElementInterface;
 use CarloNicora\Minimalism\Services\Slack\Interfaces\SlackMessagePartInterface;
+use JetBrains\PhpStorm\ArrayShape;
 
 class SlackMessagePartContext implements SlackMessagePartInterface
 {
@@ -31,7 +32,7 @@ class SlackMessagePartContext implements SlackMessagePartInterface
     /**
      * @return array
      */
-    public function getContent(): array
+    #[ArrayShape(['type' => "string", 'elements' => "array"])] public function getContent(): array
     {
         $response = [
             'type' => 'context',

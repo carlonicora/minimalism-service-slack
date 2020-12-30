@@ -3,7 +3,7 @@ version: '3.8'
 services:
   minimalism-service-slack:
     container_name: minimalism-service-slack
-    image: carlonicora/minimalism-service-slack:1.0
+    image: carlonicora/minimalism-service-slack:2.0
     build:
       context: .
       dockerfile: ./php-cli/Dockerfile
