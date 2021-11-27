@@ -11,7 +11,10 @@ class SlackElementFactory
      * @param int $textType
      * @return SlackMessageElementText
      */
-    public function createText(string $text, int $textType=SlackMessageElementInterface::TEXT_TYPE_PLAIN_TEXT): SlackMessageElementText
+    public function createText(
+        string $text,
+        int $textType=SlackMessageElementInterface::TEXT_TYPE_PLAIN_TEXT,
+    ): SlackMessageElementText
     {
         return new SlackMessageElementText($text, $textType);
     }

@@ -10,7 +10,8 @@ class SlackMessagePartFactory
     /**
      * @return SlackMessagePartDivider
      */
-    public function createDivider(): SlackMessagePartDivider
+    public function createDivider(
+    ): SlackMessagePartDivider
     {
         return new SlackMessagePartDivider();
     }
@@ -19,7 +20,9 @@ class SlackMessagePartFactory
      * @param string $text
      * @return SlackMessagePartHeader
      */
-    public function createHeader(string $text): SlackMessagePartHeader
+    public function createHeader(
+        string $text,
+    ): SlackMessagePartHeader
     {
         return new SlackMessagePartHeader($text);
     }
@@ -27,7 +30,8 @@ class SlackMessagePartFactory
     /**
      * @return SlackMessagePartContext
      */
-    public function createContext(): SlackMessagePartContext
+    public function createContext(
+    ): SlackMessagePartContext
     {
         return new SlackMessagePartContext();
     }

@@ -17,7 +17,9 @@ class SlackMessage
      * SlackMessage constructor.
      * @param string|null $text
      */
-    public function __construct(?string $text=null)
+    public function __construct(
+        ?string $text=null,
+    )
     {
         $this->text = $text;
     }
@@ -27,7 +29,9 @@ class SlackMessage
      * @return $this
      * @throws Exception
      */
-    public function withPart(SlackMessagePartInterface $part): SlackMessage
+    public function withPart(
+        SlackMessagePartInterface $part,
+    ): SlackMessage
     {
         $this->addPart($part);
 
@@ -38,7 +42,9 @@ class SlackMessage
      * @param SlackMessagePartInterface $part
      * @throws Exception
      */
-    public function addPart(SlackMessagePartInterface $part): void
+    public function addPart(
+        SlackMessagePartInterface $part,
+    ): void
     {
         if ($this->text !== null){
             throw new RuntimeException('The message has been setup as a simpel text and cannot contain parts', 412);
@@ -50,7 +56,8 @@ class SlackMessage
     /**
      * @return array
      */
-    public function getPayload(): array
+    public function getPayload(
+    ): array
     {
         if ($this->text !== null){
             return ['text' => $this->text];

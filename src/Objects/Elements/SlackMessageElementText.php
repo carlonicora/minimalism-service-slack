@@ -17,7 +17,10 @@ class SlackMessageElementText implements SlackMessagePartInterface, SlackMessage
      * @param string $text
      * @param int $textType
      */
-    public function __construct(string $text, int $textType=SlackMessageElementInterface::TEXT_TYPE_PLAIN_TEXT)
+    public function __construct(
+        string $text,
+        int $textType=SlackMessageElementInterface::TEXT_TYPE_PLAIN_TEXT,
+    )
     {
         $this->text = $text;
         $this->textType = $textType;
@@ -26,7 +29,8 @@ class SlackMessageElementText implements SlackMessagePartInterface, SlackMessage
     /**
      * @return array
      */
-    public function getContent(): array
+    public function getContent(
+    ): array
     {
         if ($this->textType === SlackMessageElementInterface::TEXT_TYPE_PLAIN_TEXT){
             return [

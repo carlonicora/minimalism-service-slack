@@ -6,5 +6,6 @@ interface SlackMessagePartInterface
     /**
      * @return array
      */
-    public function getContent(): array;
+    public function getContent(
+    ): array;
 }

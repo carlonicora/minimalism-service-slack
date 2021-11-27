@@ -1,12 +1,12 @@
 {
   "name": "carlonicora/minimalism-service-slack",
   "description": "Slack service for minimalism",
-  "version": "2.0.0",
+  "version": "3.0.0-alpha1",
   "homepage": "https://carlonicora.com",
   "time": "2020-12-24",
   "license": "MIT",
   "type": "library",
-  "minimum-stability": "stable",
+  "minimum-stability": "alpha",
   "authors": [
     {
       "name": "Carlo Nicora",
@@ -24,7 +24,7 @@
     "php": ">=8.0",
     "ext-json": "*",
     "ext-curl": "*",
-    "carlonicora/minimalism": "~12.0",
+    "carlonicora/minimalism": "~13.0",
     "guzzlehttp/guzzle": "~7.0"
   }
 }

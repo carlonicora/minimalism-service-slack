@@ -9,7 +9,9 @@ class SlackMessageFactory
      * @param string $text
      * @return SlackMessage
      */
-    public function createSimpleMessage(string $text): SlackMessage
+    public function createSimpleMessage(
+        string $text,
+    ): SlackMessage
     {
         return new SlackMessage($text);
     }
@@ -17,7 +19,8 @@ class SlackMessageFactory
     /**
      * @return SlackMessage
      */
-    public function createMessage(): SlackMessage
+    public function createMessage(
+    ): SlackMessage
     {
         return new SlackMessage();
     }

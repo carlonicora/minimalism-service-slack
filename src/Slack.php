@@ -1,33 +1,36 @@
 <?php
 namespace CarloNicora\Minimalism\Services\Slack;
 
-use CarloNicora\Minimalism\Interfaces\ServiceInterface;
+use CarloNicora\Minimalism\Abstracts\AbstractService;
 use CarloNicora\Minimalism\Services\Slack\Objects\SlackMessage;
 use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
-use RuntimeException;
 
-class Slack implements ServiceInterface
+class Slack extends AbstractService
 {
     /**
      * abstractApiCaller constructor.
      * @param string $MINIMALISM_SERVICE_SLACK_TOKEN
      */
-    public function __construct(private string $MINIMALISM_SERVICE_SLACK_TOKEN) {}
+    public function __construct(
+        private string $MINIMALISM_SERVICE_SLACK_TOKEN,
+    )
+    {
+        parent::__construct();
+    }
 
     /**
      * @param SlackMessage $message
      * @param string $channel
      * @throws Exception|GuzzleException
      */
-    public function sendSlackMessage(SlackMessage $message, string $channel): void
+    public function sendSlackMessage(
+        SlackMessage $message,
+        string $channel,
+    ): void
     {
-        if ($this->MINIMALISM_SERVICE_SLACK_TOKEN === null){
-            throw new RuntimeException('Slack not configured');
-        }
-
         $client = new Client([
             'headers' => [
                 'Authorization' => 'Bearer ' . $this->MINIMALISM_SERVICE_SLACK_TOKEN,
@@ -38,19 +41,10 @@ class Slack implements ServiceInterface
         $payload = $message->getPayload();
         $payload['channel'] = $channel;
 
+        /** @noinspection UnusedFunctionResultInspection */
         $client->post(
             'https://slack.com/api/chat.postMessage',
              [RequestOptions::JSON => $payload]
         );
     }
-
-    /**
-     *
-     */
-    public function initialise(): void {}
-
-    /**
-     *
-     */
-    public function destroy(): void {}
 }
